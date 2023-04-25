@@ -1,7 +1,11 @@
-import { products } from "../data/products";
+import { Product } from "../interfaces";
 import { ICart } from "../interfaces/cart";
 
-export const getProducts = () => {
+export const getProducts = async (): Promise<Product[]> => {
+  const res = await fetch("http://localhost:8000/api/products");
+  const products = await res.json();
+  console.log({ products });
+
   return products;
 };
 
